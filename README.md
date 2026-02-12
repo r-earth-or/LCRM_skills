@@ -20,7 +20,7 @@ npx skills add r-earth-or/LCRM_skills --list
 npx skills add r-earth-or/LCRM_skills --skill lcrm-search
 
 # install all skills
-npx skills add r-earth-or/LCRM_skills --all
+npx skills add r-earth-or/LCRM_skills
 ```
 
 If your environment needs a target agent flag (for example Claude Code), use the agent option supported by your local CLI (`npx skills add --help`).
