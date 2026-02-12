@@ -18,12 +18,6 @@
 - `node scripts/presales-itinerary.mjs ...`
 - `node scripts/request.mjs ...`（兜底）
 
-如果返回错误 `全局 API Key 缺少 feishu-id 请求头`，在请求头补充：
-
-```text
-feishu-id: <飞书用户ID>
-```
-
 ## 最小请求示例
 
 ```bash

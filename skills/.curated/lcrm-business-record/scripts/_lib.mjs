@@ -126,10 +126,6 @@ export async function lcrmRequest({
     requestHeaders.set('Content-Type', 'application/json')
   }
 
-  if (process.env.LCRM_FEISHU_ID && !requestHeaders.has('feishu-id')) {
-    requestHeaders.set('feishu-id', process.env.LCRM_FEISHU_ID)
-  }
-
   const requestInit = {
     method: method.toUpperCase(),
     headers: requestHeaders,

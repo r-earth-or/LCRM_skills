@@ -35,7 +35,6 @@ python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github
 - 基础地址：`${LCRM_BASE_URL:-https://crm.langcore.net}`
 - 鉴权头：`Authorization: Bearer ${LCRM_API_KEY}`
 - 必填环境变量：`LCRM_API_KEY`
-- 若报错 `全局 API Key 缺少 feishu-id 请求头`，补充请求头 `feishu-id: <飞书用户ID>` 后重试。
 
 ## 兼容目录（历史保留）
 
