@@ -10,7 +10,7 @@ import {
   printResult,
   printUsageAndExit,
   readJsonInput,
-} from './_lib.mjs'
+} from './lib.mjs'
 
 const FOLLOW_UP_TYPES = new Set(['微信', '电话', '线上会议', '邮件', '现场拜访', '商务活动', '其他'])
 

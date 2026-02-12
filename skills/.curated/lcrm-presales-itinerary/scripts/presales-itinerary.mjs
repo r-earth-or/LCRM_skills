@@ -9,7 +9,7 @@ import {
   printResult,
   printUsageAndExit,
   readJsonInput,
-} from './_lib.mjs'
+} from './lib.mjs'
 
 const TRIP_TYPES = new Set([
   '需求调研',

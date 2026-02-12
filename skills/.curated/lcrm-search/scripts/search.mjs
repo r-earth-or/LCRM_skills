@@ -9,7 +9,7 @@ import {
   parseQueryPairs,
   printResult,
   printUsageAndExit,
-} from './_lib.mjs'
+} from './lib.mjs'
 
 const USAGE = `
 场景1：检索脚本

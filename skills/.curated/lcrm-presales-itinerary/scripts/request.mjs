@@ -10,7 +10,7 @@ import {
   printResult,
   printUsageAndExit,
   readJsonInput,
-} from './_lib.mjs'
+} from './lib.mjs'
 
 const USAGE = `
 LCRM 通用请求脚本
