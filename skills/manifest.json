@@ -1,0 +1,52 @@
+{
+  "name": "langcore-ltc-skills",
+  "version": "0.1.0",
+  "description": "Operational skills for LCRM sales and pre-sales workflows",
+  "language": "zh-CN",
+  "api": {
+    "defaultBaseUrl": "https://crm.langcore.net",
+    "baseUrlEnv": "LCRM_BASE_URL",
+    "apiKeyEnv": "LCRM_API_KEY",
+    "requiredEnv": [
+      "LCRM_API_KEY"
+    ],
+    "optionalEnv": [
+      "LCRM_BASE_URL"
+    ],
+    "authorizationHeader": "Authorization: Bearer <LCRM_API_KEY>"
+  },
+  "distribution": {
+    "archivePath": "/skills/skills.tar.gz",
+    "checksumPath": "/skills/skills.tar.gz.sha256"
+  },
+  "scripts": {
+    "genericRequest": "scripts/request.mjs",
+    "scenarioSearch": "scripts/search.mjs",
+    "scenarioBusinessRecord": "scripts/business-record.mjs",
+    "scenarioPresalesItinerary": "scripts/presales-itinerary.mjs"
+  },
+  "skills": [
+    {
+      "id": "search-lcrm",
+      "name": "场景1-检索",
+      "entry": "search_LCRM/SKILL.md",
+      "description": "检索客户、客户关联信息、线索、机会与用户"
+    },
+    {
+      "id": "business-record",
+      "name": "场景2-商务记录填写",
+      "entry": "business-record/SKILL.md",
+      "description": "解析销售输入并创建商务记录（提交前确认）"
+    },
+    {
+      "id": "presales-itinerary",
+      "name": "场景3-售前行程填写",
+      "entry": "presales-itinerary/SKILL.md",
+      "description": "解析售前输入并创建行程（提交前确认）"
+    }
+  ],
+  "status": {
+    "owner": "langcore-ltc",
+    "lastUpdated": "2026-02-11"
+  }
+}
