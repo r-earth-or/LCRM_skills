@@ -38,8 +38,10 @@ const USAGE = `
   node scripts/presales-itinerary.mjs ai-parse --text "明天下午给XX客户做产品演示..."
   node scripts/presales-itinerary.mjs search-opportunities --keyword 朗致 --limit 20
   node scripts/presales-itinerary.mjs create --title "朗致产品演示" --start-time 2026-02-12T14:00:00 --end-time 2026-02-12T16:00:00 --opportunity-id <id> --trip-type 产品演示 --delivery-mode 现场
+  node scripts/presales-itinerary.mjs create --title "朗致产品演示" --start-time 2026-02-12T14:00:00 --end-time 2026-02-12T16:00:00 --opportunity-id <id> --trip-type 产品演示 --delivery-mode 现场 --remark "需要准备演示环境"
   node scripts/presales-itinerary.mjs create --payload-file /tmp/itinerary.json
   node scripts/presales-itinerary.mjs update --id <id> --title "更新后的标题" --start-time 2026-02-12T14:00:00 --end-time 2026-02-12T16:00:00 --opportunity-id <id> --trip-type 产品演示 --delivery-mode 现场
+  node scripts/presales-itinerary.mjs update --id <id> --title "更新后的标题" --start-time 2026-02-12T14:00:00 --end-time 2026-02-12T16:00:00 --opportunity-id <id> --trip-type 产品演示 --delivery-mode 现场 --remark "备注内容"
   node scripts/presales-itinerary.mjs delete --id <id>
   node scripts/presales-itinerary.mjs complete --id <id> --actual-hours 2.5 --completion-note "完成情况说明"
 `
@@ -104,6 +106,7 @@ function buildPayloadFromOptions(options) {
   })
   if (inlinePayload) return inlinePayload
 
+  const remark = getOption(options, 'remark')
   return {
     title: getOption(options, 'title'),
     startTime: getOption(options, 'start-time'),
@@ -111,6 +114,7 @@ function buildPayloadFromOptions(options) {
     opportunityId: getOption(options, 'opportunity-id'),
     tripType: getOption(options, 'trip-type'),
     deliveryMode: getOption(options, 'delivery-mode'),
+    ...(remark ? { remark } : {}),
   }
 }
 

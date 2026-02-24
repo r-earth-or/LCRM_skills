@@ -27,14 +27,18 @@ description: 售前行程管理：创建、修改、删除、完成、查询售�
 - 查询：`GET /api/presales-itineraries/week` (支持时间段、用户、机会筛选)
 - 辅助机会检索：`GET /api/presales-itineraries/opportunities?keyword=<关键词>&limit=20`
 
-## 创建接口必填字段
+## 创建接口字段
 
+必填：
 - `title`
 - `startTime`
 - `endTime`
 - `opportunityId`
 - `tripType`
 - `deliveryMode`
+
+选填：
+- `remark`：备注，会同步到飞书日程描述中
 
 ## 枚举约束
 
@@ -77,7 +81,8 @@ description: 售前行程管理：创建、修改、删除、完成、查询售�
      - 机会（名称 + 客户）
      - 行程类型
      - 交付形式
-   - 仅当用户明确回复“确认/提交/是”后再调用创建接口。
+     - 备注（有则展示）
+   - 仅当用户明确回复"确认/提交/是"后再调用创建接口。
 5. 调用创建脚本并回传结果：
    - `node scripts/presales-itinerary.mjs create --payload '<JSON>'`
    - 或 `--payload-file <file>`
@@ -94,6 +99,16 @@ node scripts/presales-itinerary.mjs create \
   --opportunity-id "<opportunityId>" \
   --trip-type "产品演示" \
   --delivery-mode "现场"
+
+# 带备注
+node scripts/presales-itinerary.mjs create \
+  --title "朗致产品演示" \
+  --start-time "2026-02-12T14:00:00" \
+  --end-time "2026-02-12T16:00:00" \
+  --opportunity-id "<opportunityId>" \
+  --trip-type "产品演示" \
+  --delivery-mode "现场" \
+  --remark "需要准备演示环境"
 ```
 
 ### 修改行程
@@ -107,6 +122,17 @@ node scripts/presales-itinerary.mjs update \
   --opportunity-id "<opportunityId>" \
   --trip-type "方案沟通" \
   --delivery-mode "远程"
+
+# 带备注
+node scripts/presales-itinerary.mjs update \
+  --id "<itineraryId>" \
+  --title "更新后的标题" \
+  --start-time "2026-02-12T15:00:00" \
+  --end-time "2026-02-12T17:00:00" \
+  --opportunity-id "<opportunityId>" \
+  --trip-type "方案沟通" \
+  --delivery-mode "远程" \
+  --remark "更新备注"
 ```
 
 ### 删除行程
@@ -116,6 +142,10 @@ node scripts/presales-itinerary.mjs delete --id "<itineraryId>"
 ```
 
 ### 完成行程
+
+完成行程后，系统会自动根据完成情况创建一条商务记录（跟进类型为"售前现场"或"售前远程"，取决于行程的交付形式）。
+
+`--completion-note` 支持富文本（HTML 格式）。
 
 ```bash
 node scripts/presales-itinerary.mjs complete \
