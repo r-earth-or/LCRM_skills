@@ -3,7 +3,7 @@ name: lcrm-presales-itinerary
 description: 售前行程管理：创建、修改、删除、完成、查询售前行程，支持AI解析自然语言输入。
 ---
 
-# 场景3：售前行程管理
+# 售前行程管理
 
 ## 目标
 

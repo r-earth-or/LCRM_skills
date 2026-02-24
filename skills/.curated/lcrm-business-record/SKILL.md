@@ -3,7 +3,7 @@ name: lcrm-business-record
 description: 解析销售输入并创建商务记录，缺失信息时先追问，提交前必须确认。
 ---
 
-# 场景2：商务记录填写
+# 商务记录填写
 
 ## 目标
 

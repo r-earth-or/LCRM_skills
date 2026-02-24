@@ -28,25 +28,43 @@
   "skills": [
     {
       "id": "search-lcrm",
-      "name": "场景1-检索",
+      "name": "LCRM通用检索",
       "entry": "search_LCRM/SKILL.md",
       "description": "检索客户、客户关联信息、线索、机会与用户"
     },
     {
       "id": "business-record",
-      "name": "场景2-商务记录填写",
+      "name": "商务记录填写",
       "entry": "business-record/SKILL.md",
       "description": "解析销售输入并创建商务记录（提交前确认）"
     },
     {
       "id": "presales-itinerary",
-      "name": "场景3-售前行程填写",
+      "name": "售前行程填写",
       "entry": "presales-itinerary/SKILL.md",
       "description": "解析售前输入并创建行程（提交前确认）"
+    },
+    {
+      "id": "lcrm-target-customer",
+      "name": "目标客群策略助手",
+      "entry": ".curated/lcrm-target-customer/SKILL.md",
+      "description": "基于9大战场框架+实时搜索验证，快速判断客户匹配度、准备拜访资料、规划行业拓展"
+    },
+    {
+      "id": "lcrm-visit-assistant",
+      "name": "拜访助手",
+      "entry": ".curated/lcrm-visit-assistant/SKILL.md",
+      "description": "为客户拜访提供结构化准备思路，输出匹配度分析、切入点话术、关键问题清单和拜访策略"
+    },
+    {
+      "id": "lcrm-deal-closer",
+      "name": "销售打单助手",
+      "entry": ".curated/lcrm-deal-closer/SKILL.md",
+      "description": "先获取客户信息和跟进记录，判断产品匹配路径，输出针对性打单策略"
     }
   ],
   "status": {
     "owner": "langcore-ltc",
-    "lastUpdated": "2026-02-11"
+    "lastUpdated": "2026-02-24"
   }
 }
