@@ -15,10 +15,6 @@
     ],
     "authorizationHeader": "Authorization: Bearer <LCRM_API_KEY>"
   },
-  "distribution": {
-    "archivePath": "/skills/skills.tar.gz",
-    "checksumPath": "/skills/skills.tar.gz.sha256"
-  },
   "scripts": {
     "genericRequest": "scripts/request.mjs",
     "scenarioSearch": "scripts/search.mjs",
