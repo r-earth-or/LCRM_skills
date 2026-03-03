@@ -31,6 +31,11 @@ const USAGE = `
   node scripts/search.mjs opportunities --query customerName=朗致集团 --query status=需求引导,客户立项
   node scripts/search.mjs notifications --status active --category LEAD_TIMEOUT
   node scripts/search.mjs presales-itineraries --start-date 2026-02-10 --end-date 2026-02-16
+  node scripts/search.mjs contracts --title "合同标题"
+  node scripts/search.mjs contracts --customer-name "客户名"
+  node scripts/search.mjs contracts --signed-at-start-date 2026-01-01 --signed-at-end-date 2026-03-31
+  node scripts/search.mjs contract-payments --status 待回款
+  node scripts/search.mjs contract-payments --expected-at-start-date 2026-01-01 --expected-at-end-date 2026-03-31
 
 公共参数:
   --query key=value    追加查询参数，可重复
@@ -282,6 +287,56 @@ async function runPresalesItineraries(options) {
   })
 }
 
+async function runContracts(options) {
+  const query = queryWithCommon(options)
+  const title = getOption(options, 'title')
+  const contractNumber = getOption(options, 'contract-number')
+  const customerName = getOption(options, 'customer-name')
+  const signedAtStartDate = getOption(options, 'signed-at-start-date')
+  const signedAtEndDate = getOption(options, 'signed-at-end-date')
+  const page = getOption(options, 'page')
+  const limit = getOption(options, 'limit')
+
+  if (title) query.push(['title', title])
+  if (contractNumber) query.push(['contractNumber', contractNumber])
+  if (customerName) query.push(['customerName', customerName])
+  if (signedAtStartDate) query.push(['signedAtStartDate', signedAtStartDate])
+  if (signedAtEndDate) query.push(['signedAtEndDate', signedAtEndDate])
+  if (page) query.push(['page', page])
+  if (limit) query.push(['limit', limit])
+
+  return lcrmRequest({
+    method: 'GET',
+    path: '/api/contracts',
+    query,
+  })
+}
+
+async function runContractPayments(options) {
+  const query = queryWithCommon(options)
+  const title = getOption(options, 'title')
+  const contractNumber = getOption(options, 'contract-number')
+  const status = getOption(options, 'status')
+  const expectedAtStartDate = getOption(options, 'expected-at-start-date')
+  const expectedAtEndDate = getOption(options, 'expected-at-end-date')
+  const page = getOption(options, 'page')
+  const limit = getOption(options, 'limit')
+
+  if (title) query.push(['title', title])
+  if (contractNumber) query.push(['contractNumber', contractNumber])
+  if (status) query.push(['status', status])
+  if (expectedAtStartDate) query.push(['expectedAtStartDate', expectedAtStartDate])
+  if (expectedAtEndDate) query.push(['expectedAtEndDate', expectedAtEndDate])
+  if (page) query.push(['page', page])
+  if (limit) query.push(['limit', limit])
+
+  return lcrmRequest({
+    method: 'GET',
+    path: '/api/contracts/payments',
+    query,
+  })
+}
+
 const HANDLERS = {
   me: runMe,
   customers: runCustomers,
@@ -297,6 +352,8 @@ const HANDLERS = {
   opportunities: runOpportunities,
   notifications: runNotifications,
   'presales-itineraries': runPresalesItineraries,
+  contracts: runContracts,
+  'contract-payments': runContractPayments,
 }
 
 async function main() {
